@@ -1,10 +1,13 @@
-define("ace/mode/lilypond_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"], function(require, exports, module) {
+define("ace/mode/lilypond_highlight_rules",["require","exports","module","ace/lib/oop","ace/lib/lang","ace/mode/text_highlight_rules"], function(require, exports, module) {
 "use strict";
 
-var oop = require("ace/lib/oop");
+var oop = require("../lib/oop");
+var lang = require("../lib/lang");
 var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
 
-var LilypondHighlightRules = function() {
+var LilypondHighlightRules = function(textClass) {
+        if (!textClass)
+            textClass = "text";
 
         var keywords = "AccidentalSuggestion add-grace-property add-stem-support " +
         "add-toc-item! additionalPitchPrefix afterGraceFraction " +
