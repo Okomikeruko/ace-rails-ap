@@ -490,7 +490,7 @@ define("ace/mode/lilypond",["require","exports","module","ace/lib/oop","ace/mode
 "use strict";
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
-var HighlightRules = require("./lilypond_highlight_rules").HighlightRules;
+var HighlightRules = require("./lilypond_highlight_rules").lilypondHighlightRules;
 var FoldMode = require("./folding/cstyle").FoldMode;
 var Mode = function () {
     this.HighlightRules = HighlightRules;
