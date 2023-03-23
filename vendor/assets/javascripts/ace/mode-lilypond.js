@@ -259,7 +259,7 @@ var lilypondHighlightRules = function () {
                 next: "pop"
             }, {
                 token: "constant.character",
-                regex: "(?:\\b|<)(?:<?[a-grsR]{1}[es|is]*[',]*\\s?)>?\\d?\\.?\\b"
+                regex: "(?:<(?:[a-grsR]{1}[es|is]*[',]*\\s?)+>\\d*\\.*|\\b[a-grsR]{1}[es|is]*[',]*\\d*\\.*)"
             }, {
                 token: "constant.language.boolean",
                 regex: "#+[tf]"
@@ -283,8 +283,7 @@ var lilypondHighlightRules = function () {
                 regex: "#?\\\"",
                 next: "string"
             }, {
-                token: "variable",
-                regex: "\\\\(?:[a-zA-Z-_]+)"
+                include: "variable"
             }, {
                 defaultToken: "text"
             }
@@ -316,6 +315,8 @@ var lilypondHighlightRules = function () {
                 token: "keyword.operator",
                 regex: "(?:--|__)"
             }, {
+                include: "variable"
+            }, {
                 defaultToken: "string",
                 caseInsensitive: true
             }
@@ -331,6 +332,12 @@ var lilypondHighlightRules = function () {
             }, {
                 defaultToken: "string",
                 caseInsensitive: true
+            }
+        ],
+        "variable": [
+            {
+                token: "variable",
+                regex: "\\\\(?:[a-zA-Z-_]+)"
             }
         ]
     };
