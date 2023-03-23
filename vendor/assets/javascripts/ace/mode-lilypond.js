@@ -271,7 +271,10 @@ var lilypondHighlightRules = function () {
                 regex: "\\#\\'?\\([a-zA-Z-_.\\d\\s]*\\)"
             }, {
                 token: "support.class",
-                regex: "\\b(?:" + keywords.split(" ").join("\\b|\\b") + ")\\b"
+                regex: "\\b(?:" + keywords.match(/\b[A-Z][a-zA-Z]*\b/gm).join("\\b|\\b") + ")\\b"
+            }, {
+                token: "support.function",
+                regex: "\\b(?:" + keywords.match(/\b[a-z][a-zA-Z-]*\b/gm).join("\\b|\\b") + ")\\b"
             }, {
                 token: "keyword.control",
                 regex: "\\\\(?:" + controllers.split(" ").join("|") + ")\\b"
