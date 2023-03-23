@@ -4,7 +4,7 @@ define("ace/mode/lilypond_highlight_rules",["require","exports","module","ace/li
 var oop = require("ace/lib/oop");
 var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
 
-var lilypondHighlightRules = function() {
+var LilypondHighlightRules = function() {
 
         var keywords = "AccidentalSuggestion add-grace-property add-stem-support " +
         "add-toc-item! additionalPitchPrefix afterGraceFraction " +
@@ -308,12 +308,9 @@ var lilypondHighlightRules = function() {
     };
 };
 
-lilypondHighlightRules.metaData =
+oop.inherits(LilypondHighlightRules, TextHighlightRules);
 
-
-oop.inherits(lilypondHighlightRules, TextHighlightRules);
-
-exports.lilypondHighlightRules = lilypondHighlightRules;
+exports.LilypondHighlightRules = LilypondHighlightRules;
 });
 
 define("ace/mode/folding/cstyle",["require","exports","module","ace/lib/oop","ace/range","ace/mode/folding/fold_mode"], function(require, exports, module){"use strict";
