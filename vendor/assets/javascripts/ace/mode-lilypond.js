@@ -361,8 +361,8 @@ var FoldMode = exports.FoldMode = function (commentRegex) {
 };
 oop.inherits(FoldMode, BaseFoldMode);
 (function () {
-    this.foldingStartMarker = /([\{\[\(]|})\s*(?:<<)[^\}\]\)]*$|^\s*(\/\*)/;
-    this.foldingStopMarker = /^[^\[\{\(]*([\}\]\)])|^[\s\*]*(\*\/)|^.*>>.*$/;
+    this.foldingStartMarker = /([\{\[\(\<])[^\}\]\)]*$|^\s*(\/\*)|<</; // Add `<<` as folding start marker
+    this.foldingStopMarker = /^[^\[\{\(\<]*([\}\]\)\>])|^[\s\*]*(\*\/)|>>/; // Add `>>` as folding stop marker
     this.singleLineBlockCommentRe = /^\s*(\/\*).*\*\/\s*$/;
     this.tripleStarBlockCommentRe = /^\s*(\/\*\*\*).*\*\/\s*$/;
     this.startRegionRe = /^\s*(\/\*|\/\/)#?region\b/;
