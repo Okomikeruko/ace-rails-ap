@@ -52,7 +52,7 @@ var lilypondHighlightRules = function () {
         "default default-staff-staff-spacing defaultBarType dim dodecaphonic " +
         "dodecaphonic-first dodecaphonic-no-repeat drumPitchNames " +
         "drumPitchTable DrumStaff drumStyleTable dynamic-event " +
-        "DynamicLineSpanner explicitClefVisibility " +
+        "DynamicLineSpanner DynamicText explicitClefVisibility " +
         "explicitKeySignatureVisibility extra-offset Ez_numbers_engraver " +
         "figuredBassAlterationDirection figuredBassPlusDirection " +
         "fingeringOrientations first-page-number followVoice font-encoding " +
@@ -259,7 +259,7 @@ var lilypondHighlightRules = function () {
                 next: "pop"
             }, {
                 token: "constant.character",
-                regex: "(?:<(?:[a-grsR]{1}[es|is]*[',]*\\s?)+>\\d*\\.*|\\b[a-grsR]{1}[es|is]*[',]*\\d*\\.*)"
+                regex: "(?:<(?:\\s*[a-grsR](?:[ei]s)*[',]*)+>\\d*\\.*|\\b[a-grsR](?:[ei]s)*[',]*\\d*\\.*)"
             }, {
                 token: "constant.language.boolean",
                 regex: "#+[tf]"
@@ -309,13 +309,13 @@ var lilypondHighlightRules = function () {
                 regex: "}",
                 next: "start"
             }, {
+                include: "variable"
+            }, {
                 token: "constant.character.escape",
                 regex: "\\\\."
             }, {
                 token: "keyword.operator",
                 regex: "(?:--|__)"
-            }, {
-                include: "variable"
             }, {
                 defaultToken: "string",
                 caseInsensitive: true
@@ -361,8 +361,8 @@ var FoldMode = exports.FoldMode = function (commentRegex) {
 };
 oop.inherits(FoldMode, BaseFoldMode);
 (function () {
-    this.foldingStartMarker = /([\{\[\(])[^\}\]\)]*$|^\s*(\/\*)/;
-    this.foldingStopMarker = /^[^\[\{\(]*([\}\]\)])|^[\s\*]*(\*\/)/;
+    this.foldingStartMarker = /([\{\[\(]|})\s*(?:<<)[^\}\]\)]*$|^\s*(\/\*)/;
+    this.foldingStopMarker = /^[^\[\{\(]*([\}\]\)])|^[\s\*]*(\*\/)|^.*>>.*$/;
     this.singleLineBlockCommentRe = /^\s*(\/\*).*\*\/\s*$/;
     this.tripleStarBlockCommentRe = /^\s*(\/\*\*\*).*\*\/\s*$/;
     this.startRegionRe = /^\s*(\/\*|\/\/)#?region\b/;
