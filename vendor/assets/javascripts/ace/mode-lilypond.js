@@ -259,7 +259,7 @@ var lilypondHighlightRules = function () {
                 next: "pop"
             }, {
                 token: "constant.character",
-                regex: "(?:<(?:\\s*[a-grsR](?:[ei]s)*[',]*)+>\\d*\\.*|\\b[a-grsR](?:[ei]s)*[',]*\\d*\\.*\\b)"
+                regex: /(?:<(?:\s*[a-grsR](?:[ei]s)*[',]*)+>\d*\.*|\b[a-grsR](?:[ei]s)*[',]*\d*\.*(?:\b|[',]*))/
             }, {
                 token: "constant.language.boolean",
                 regex: "#+[tf]"
